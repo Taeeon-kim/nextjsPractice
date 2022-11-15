@@ -1,15 +1,16 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   console.log("server");
   return {
     props: { time: new Date().toISOString() }, // 형식에 맞ㅝㅓ props 라는 것으로 내보내야함
+    revalidate: 1, // 초단위
   };
 }
 
-export default function Home({ time }) {
-  console.log(time);
+export default function ISR({ time }) {
   return (
     <div className="container">
       <Head>
@@ -19,12 +20,6 @@ export default function Home({ time }) {
 
       <main>
         <h1>{time}</h1>
-        <h1>
-          <Link href="/csr">CSR 로</Link>
-          <br />
-          <Link href="/ssg">SSG 로</Link>
-          <Link href="/isr">ISR 로</Link>
-        </h1>
       </main>
 
       <footer>
