@@ -1,8 +1,8 @@
-import Head from "next/head";
-import Link from "next/link";
+import Head from 'next/head';
+import Link from 'next/link';
 
 export async function getServerSideProps() {
-  console.log("server");
+  console.log('server2');
   return {
     props: { time: new Date().toISOString() }, // 형식에 맞ㅝㅓ props 라는 것으로 내보내야함
   };
